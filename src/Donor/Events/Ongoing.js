@@ -1,12 +1,9 @@
 import React from "react";
-import { forwardRef } from 'react';
-import MaterialTable from 'material-table'
-import DeleteOutline from '@material-ui/icons/DeleteOutline';
-import Edit from '@material-ui/icons/Edit';
-import tableIcons from "../icons";
-import "./table.css";
+import MaterialTable from 'material-table';
+//import "./table.css";
 import fakeData from './fakeData.json';
-
+import { Button } from "react-bootstrap";
+import tableIcons from "./icons";
 
 const Ongoing = () => {
     return(
@@ -42,18 +39,12 @@ const Ongoing = () => {
             { title: 'End Time', field: 'endTime'},
           ]}
           data={fakeData}
-          title="Event Detail's"
+          title="Ongoing Event's"
           actions={[
-            {
-              icon: ()=><Edit />,
-              tooltip: 'Edit Event',
-              onClick: (event, rowData) => alert("You Edited " + rowData.name)
-            },
-            {
-              icon: ()=><DeleteOutline />,
-              tooltip: 'Delete Event',
-              onClick: (event, rowData) => alert("You Deleted " + rowData.name)
-            },
+            {   
+              icon: ()=><Button className="Button">Donate</Button>,
+              tooltip: 'Donate',
+            }
           ]}
         />
         </div>
