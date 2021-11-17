@@ -1,14 +1,14 @@
 import React from "react";
 import { forwardRef } from 'react';
 import MaterialTable from 'material-table'
-import DeleteOutline from '@material-ui/icons/DeleteOutline';
-import Edit from '@material-ui/icons/Edit';
-import tableIcons from "../icons";
-import "./table.css";
-import fakeData from './fakeData.json';
+//import "./table.css";
+import fakeUp from './fakeUp.json';
+import { Button } from "react-bootstrap";
+import tableIcons from "./icons";
 
 
-const Ongoing = () => {
+
+const Upcoming = () => {
     return(
       <div className="myTable" style={{maxWidth: "85%"}}>
         <MaterialTable
@@ -41,19 +41,13 @@ const Ongoing = () => {
             { title: 'Start Time', field: 'startTime'},
             { title: 'End Time', field: 'endTime'},
           ]}
-          data={fakeData}
-          title="Event Detail's"
+          data={fakeUp}
+          title="Upcoming Event's"
           actions={[
-            {
-              icon: ()=><Edit />,
-              tooltip: 'Edit Event',
-              onClick: (event, rowData) => alert("You Edited " + rowData.name)
-            },
-            {
-              icon: ()=><DeleteOutline />,
-              tooltip: 'Delete Event',
-              onClick: (event, rowData) => alert("You Deleted " + rowData.name)
-            },
+            {   
+                icon: ()=><Button className="Button">Donate</Button>,
+                tooltip: 'Donate',
+            }
           ]}
         />
         </div>
@@ -61,4 +55,4 @@ const Ongoing = () => {
   );
 };
 
-export default Ongoing;
+export default Upcoming;

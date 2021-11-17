@@ -18,6 +18,7 @@ import AdminDash from "./Admin/AdminDash";
 import Home from "./Home";
 import NotFound from "./NotFound";
 import NVDash from "./NVDash";
+import DonorDash from './Donor/Donordash';
 const App=() =>{
   return (
     <Router>
@@ -27,6 +28,9 @@ const App=() =>{
         </Route>
         <Route path="/admin">
           <AdminDash />
+        </Route>
+        <Route path="/donor">
+          <DonorDash />
         </Route>
         <Route path="/ngoVol">
           <NVDash />
