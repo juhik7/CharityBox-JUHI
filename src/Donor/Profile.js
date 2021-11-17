@@ -79,7 +79,7 @@ const Create = () => {
                                 </div>
                             </div>
                         </div>
-                        <button style={{minWidth:"100%"}}>Submit</button>
+                        <button style={{minWidth:"100%"}}>EDIT</button>
 
                     </form>
                 </div>

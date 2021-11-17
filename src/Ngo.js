@@ -1,14 +1,13 @@
 import React from "react";
-import NavbarComp from'./VolNgo/Navbar';
 import pushNotification from "./pushNotification";
 import NavbarComp2 from "./VolNgo/newngopage";
-const NVDash = () => {
+const NgoDash = () => {
     return(
         <div className="App">
-        <NavbarComp/>
+        <NavbarComp2/>
         <pushNotification/>      
         </div>
     );
 };
 
-export default NVDash;
+export default NgoDash;

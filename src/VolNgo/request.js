@@ -14,14 +14,9 @@ export default enroll;*/
 import React, { useState ,useEffect} from "react";
 import '../App.css';
 import firebase from "firebase";
-
-
-
 const RequestMsg =()=>{
   const [name ,setName] = useState("");
   const [skill ,setSkill] = useState("");
-
-  
   const [loader, setLoader] = useState(false);
   const handleSubmit = (e)=>{
     e.preventDefault();
@@ -49,10 +44,8 @@ const RequestMsg =()=>{
             <h1>VOLUNTEER DETAIL</h1>
             <label>NAME</label>
             <input placeholder="" value={name} onChange={(e)=> setName(e.target.value)}/>
-
             <label>SKILL</label>
             <input placeholder="" value={skill} onChange={(e)=> setSkill(e.target.value)}/>
-
             <button type="submit">SEND</button>
           </form>
         );

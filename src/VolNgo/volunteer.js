@@ -1,5 +1,5 @@
 import React from "react";
-import { Button ,Card} from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 import { Row, Col } from "react-bootstrap";
 import { Carousel } from 'react-bootstrap';
 import firebase from "firebase";
@@ -10,11 +10,9 @@ import logo192 from "../../src/VolNgo/image/vol.jpg"
 import logo193 from "../../src/VolNgo/image/vol2.jpg"
 import logo194 from "../../src/VolNgo/image/vol.gif"
 import logo195 from "../../src/VolNgo/image/volslide.jpg"
-import logo196 from "../../src/VolNgo/image/v2.png"
+import logo196 from "../../src/VolNgo/image/NGO.jpg"
 import logo197 from "../../src/VolNgo/image/vol.gif"
 import RequestMsg from "./request";
-
-
 import { Routes, Route } from 'react-router-dom';
 import {
   BrowserRouter as Router,
@@ -35,39 +33,35 @@ function Subscribe() {
 function Volunteer() {
   return (
     <div className="container"><Router>
-      {/* <div style={{ backgroundImage: "url(/card_go.jpg)" }}>*/}
-      <div className="heading">
+      <div className="container">
         <h1>Become a Volunteer</h1>
-        <h4>We provide our volunteers the opportunity to grow through selfless action. You can contribute in any of the below ways –
-
-        </h4>
+        <h5>We provide our volunteers the opportunity to grow through selfless action. You can contribute in any of the below ways –
+        </h5>
       </div>
-
-      <div className="heading">
-        <h4>
+      <div className="container">
+        <h5>
           Use your talents to spread happiness ?
-        </h4>
+        </h5>
       </div>
-
-      <div className="heading">
-        <h3>Whatever talent you have, we are sure you can somehow make use of it to spread happiness with us ? !!</h3>
+      <div className="container">
+        <h5>Whatever talent you have, we are sure you can somehow make use of it to spread happiness with us ? !!</h5>
         <p>Write to us at
-        abc@gamil.com with your resume mentioning what type of volunteering opportunities you are looking for. Keep the subject line as “Volunteer: name,skillset”. Happy Volunteering ?</p>
-
+          abc@gamil.com with your resume mentioning what type of volunteering opportunities you are looking for. Keep the subject line as “Volunteer: name,skillset”.</p>
+        <h6> Happy Volunteering ?</h6>
       </div>
       <div className="container">
         <Row><Col>
-        <Card style={{ width: '18rem' }}>
-              <Card.Img className="imagecss" variant="top" src={logo193} />
-              <Card.Body>
-                <Card.Title>POST HOMEMAKER THINGS</Card.Title>
-               <Card.Text>
-               If you are a Homemaker, be our Society representative and help us organize drives at your society
-               </Card.Text>
-                <Button variant="primary">ADD</Button>
-              </Card.Body>
-            </Card>
-            </Col>
+          <Card style={{ width: '18rem' }}>
+            <Card.Img className="imagecss" variant="top" src={logo193} />
+            <Card.Body>
+              <Card.Title>POST HOMEMAKER THINGS</Card.Title>
+              <Card.Text>
+                If you are a Homemaker, be our Society representative and help us organize drives at your society
+              </Card.Text>
+              <Button variant="primary">ADD</Button>
+            </Card.Body>
+          </Card>
+        </Col>
           <Col>
             <Card style={{ width: '18rem' }}>
               <Card.Img className="imagecss" variant="top" src={logo192} />
@@ -81,7 +75,7 @@ function Volunteer() {
               </Card.Body>
             </Card>
           </Col>
-        <Col>
+          <Col>
             <Card style={{ width: '18rem' }}>
               <Card.Img className="imagecss" variant="top" src={logo194} />
               <Card.Body>
@@ -92,7 +86,7 @@ function Volunteer() {
                 <Button variant="primary">ADD</Button>
               </Card.Body>
             </Card>
-  </Col>
+          </Col>
         </Row>
       </div>
       <div className="container">
@@ -104,7 +98,6 @@ function Volunteer() {
               alt="First slide"
             />
             <Carousel.Caption className="d">
-              
               <p></p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -114,9 +107,7 @@ function Volunteer() {
               src={logo196}
               alt="Second slide"
             />
-
             <Carousel.Caption className="d">
-              
               <p></p>
             </Carousel.Caption>
           </Carousel.Item>
@@ -126,16 +117,13 @@ function Volunteer() {
               src={logo197}
               alt="Third slide"
             />
-
             <Carousel.Caption className="d">
-              
               <p></p>
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
       </div>
       <div>
-
         <button onClick={Subscribe}>get notification</button>
       </div>
       <div>

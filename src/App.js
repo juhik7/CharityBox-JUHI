@@ -19,6 +19,7 @@ import Home from "./Home";
 import NotFound from "./NotFound";
 import NVDash from "./NVDash";
 import DonorDash from './Donor/Donordash';
+import NgoDash from './Ngo';
 const App=() =>{
   return (
     <Router>
@@ -32,8 +33,11 @@ const App=() =>{
         <Route path="/donor">
           <DonorDash />
         </Route>
-        <Route path="/ngoVol">
+        <Route path="/volunteer">
           <NVDash />
+        </Route>
+        <Route path="/ngo">
+          <NgoDash />
         </Route>
         <Route component={NotFound} />
       </Switch>

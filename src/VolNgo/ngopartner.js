@@ -24,20 +24,18 @@ function Ngopartner() {
     <>
       <div className="container">
         <h1>Become our Partner NGO</h1>
-        <h4>We want your organization to get more non-monetary donations – clothes, stationery, household goods and other items that you can use to make a difference. Just tell us your requirements and we will fulfill them in the best possible way.</h4>
+         </div>
+      <div className="container">
+        <h5>How we support NGOs?
+        </h5>
       </div>
       <div className="container">
-        <h4>How we support NGOs?
-        </h4>
-      </div>
-      <div className="container">
-        <p>We fulfill your needs by collecting donations from different donors and deliver them to you
-        </p>
-        <p>We spread awareness about the different causes you support</p>
-        <p>We let people know about your great work and your requirements</p>
-        <p>We connect you corporates & volunteers.
-        </p>
-        <p>To become our partner, send us a mail at ngo@sadsindia.org. Let’s Spread Happiness together!!</p> </div>
+        <h5>We fulfill your needs by collecting donations from different donors and deliver them to you
+        </h5>
+        
+        <h5>We let people know about your great work and your requirements</h5>
+        <p>We connect you corporates & volunteers. To become our partner, send us a mail at ngo@sadsindia.org. </p>
+        <h6>Let’s Spread Happiness together!!</h6> </div>
       <div className="container">
         <Row>
           <Col>

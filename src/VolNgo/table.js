@@ -17,6 +17,7 @@ import SaveAlt from '@material-ui/icons/SaveAlt';
 import Search from '@material-ui/icons/Search';
 import ViewColumn from '@material-ui/icons/ViewColumn';
 import "../table.css";
+import { CenterFocusStrong } from "@material-ui/icons";
 
 
 const Ongoing = () => {
@@ -40,7 +41,7 @@ const Ongoing = () => {
       ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
     };
     return(
-      <div style={{maxWidth: "75%"}}>
+      <div style={{maxWidth: "100%",}}>
         <MaterialTable
         icons={tableIcons}
         detailPanel={rowData => {
