@@ -46,7 +46,7 @@ function Ngopartner() {
               <Card.Body>
                 <Card.Title>Raksana Charitable Trust</Card.Title>
                
-                <Button variant="primary">ADD</Button>
+              
               </Card.Body>
             </Card>
           </Col>
@@ -55,7 +55,7 @@ function Ngopartner() {
               <Card.Img className="imagecss" variant="top" src={logo12} />
               <Card.Body>
                 <Card.Title>Angels Orphanage</Card.Title>
-                <Button variant="primary">ADD</Button>
+            
               </Card.Body>
             </Card>
           </Col>
@@ -64,7 +64,7 @@ function Ngopartner() {
               <Card.Img className="imagecss" variant="top" src={logo13} />
               <Card.Body>
                 <Card.Title>Shivashakthi Mahila Sangha</Card.Title>
-                <Button variant="primary">ADD</Button>
+                
               </Card.Body>
             </Card>
           </Col>

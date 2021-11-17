@@ -2,7 +2,7 @@ import React ,{useEffect} from "react";
 import firebase from "./firebase";
 function PushNotification() { 
 
- useEffect(()=>{
+ //useEffect(()=>{
     const msg=firebase.messaging();
     msg.requestPermission().then(()=>{
       return msg.getToken();                                
@@ -11,7 +11,7 @@ function PushNotification() {
     }).catch(()=>{
       console.log('error');
     })
-    })
+   // })
   /*function Subscribe()
   {
     const msg=firebase.messaging();

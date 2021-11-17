@@ -1,5 +1,5 @@
 import React from "react";
-//import { Button } from 'react-bootstrap';
+import { Button ,Card} from 'react-bootstrap';
 import { Row, Col } from "react-bootstrap";
 import { Carousel } from 'react-bootstrap';
 import firebase from "firebase";
@@ -13,8 +13,7 @@ import logo195 from "../../src/VolNgo/image/volslide.jpg"
 import logo196 from "../../src/VolNgo/image/v2.png"
 import logo197 from "../../src/VolNgo/image/vol.gif"
 import RequestMsg from "./request";
-import 'antd/dist/antd.css';
-import { Card } from 'antd';
+
 
 import { Routes, Route } from 'react-router-dom';
 import {
@@ -22,8 +21,6 @@ import {
   Switch,
   Link
 } from "react-router-dom";
-
-const { Meta } = Card;
 
 function Subscribe() {
   const msg = firebase.messaging();
@@ -37,7 +34,7 @@ function Subscribe() {
 }
 function Volunteer() {
   return (
-    <div className="container-fluid myBlock"><Router>
+    <div className="container"><Router>
       {/* <div style={{ backgroundImage: "url(/card_go.jpg)" }}>*/}
       <div className="heading">
         <h1>Become a Volunteer</h1>
@@ -54,52 +51,37 @@ function Volunteer() {
 
       <div className="heading">
         <h3>Whatever talent you have, we are sure you can somehow make use of it to spread happiness with us ? !!</h3>
-        <p>Write to us at</p>
-        <a as={Link} to={"/RequestMsg"}>RequestMsg</a><p> with your resume mentioning what type of volunteering opportunities you are looking for. Keep the subject line as “Volunteer: name,skillset”. Happy Volunteering ?</p>
+        <p>Write to us at
+        abc@gamil.com with your resume mentioning what type of volunteering opportunities you are looking for. Keep the subject line as “Volunteer: name,skillset”. Happy Volunteering ?</p>
 
-      </div><br/>
+      </div>
       <div className="container">
-        <Row >
-          <div className="col-4 ">
-          <Card
-    hoverable
-    style={{ width: 240 }}
-    cover={<img alt="example" src={logo192}/>}
-  >
-    <Meta title="Europe Street beat" description="www.instagram.com" />
-  </Card>
-          </div>
-          <div className="col-4 ">
-          <Card
-    hoverable
-    style={{ width: 240 }}
-    cover={<img alt="example" src={logo192}/>}
-  >
-    <Meta title="Europe Street beat" description="www.instagram.com" />
-  </Card>
-          </div>
-          <div className="col-4 ">
-          <Card
-    hoverable
-    style={{ width: 240 }}
-    cover={<img alt="example" src={logo192}/>}
-  >
-    <Meta title="Europe Street beat" description="www.instagram.com" />
-  </Card>
-          </div>
-          {/* <div className="col-4 myBlock2">
+        <Row><Col>
+        <Card style={{ width: '18rem' }}>
+              <Card.Img className="imagecss" variant="top" src={logo193} />
+              <Card.Body>
+                <Card.Title>POST HOMEMAKER THINGS</Card.Title>
+               <Card.Text>
+               If you are a Homemaker, be our Society representative and help us organize drives at your society
+               </Card.Text>
+                <Button variant="primary">ADD</Button>
+              </Card.Body>
+            </Card>
+            </Col>
+          <Col>
             <Card style={{ width: '18rem' }}>
               <Card.Img className="imagecss" variant="top" src={logo192} />
               <Card.Body>
                 <Card.Title>POST PHOTOGRAPH</Card.Title>
                 <Card.Text>
                   If you are a photographer, you can make our special kids happy. They sooooooo love posing and getting clicked.
+                  .................................
                 </Card.Text>
                 <Button variant="primary">ADD</Button>
               </Card.Body>
             </Card>
-          </div>
-          <div className="col-4 myBlock2">
+          </Col>
+        <Col>
             <Card style={{ width: '18rem' }}>
               <Card.Img className="imagecss" variant="top" src={logo194} />
               <Card.Body>
@@ -110,7 +92,7 @@ function Volunteer() {
                 <Button variant="primary">ADD</Button>
               </Card.Body>
             </Card>
-  </div>*/}
+  </Col>
         </Row>
       </div>
       <div className="container">
