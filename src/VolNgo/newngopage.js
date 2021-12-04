@@ -16,7 +16,8 @@ import Volunteer from "./volunteer";
 import Personalquery from "./personalquery";
 import Contact from "./contact";
 import Ongoing from "./table";
-
+import RequestCloth from "./Event";
+import RegisterPageNgo from "./registerPageNgo";
 function Subscribe4() {
   const msg2 = firebase.messaging();
   msg2.requestPermission().then(() => {
@@ -40,8 +41,10 @@ export default class NavbarComp2 extends Component {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
+                <Nav.Link as={Link} to={"/RegisterPageNgo"}>registration form</Nav.Link>
                   <Nav.Link as={Link} to={"/ngopartner"}>NGO PARTNER</Nav.Link>
                   <Nav.Link as={Link} to={"/Ongoing"}> EVENTS</Nav.Link>
+                  <Nav.Link as={Link} to={"/RequestCloth"}>REQUEST</Nav.Link>
                   <NavDropdown title="CONTACT US" id="collasible-nav-dropdown">
                     <NavDropdown.Item as={Link} to={"/contact"}>+91827398127</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to={"/personalquery"}>QUERY</NavDropdown.Item>
@@ -53,7 +56,9 @@ export default class NavbarComp2 extends Component {
           </Navbar>
           <div>
             <Switch>
-
+            <Route path="/RegisterPageNgo">
+                <RegisterPageNgo />
+              </Route>
               <Route path="/ngopartner">
                 <Ngopartner />
               </Route>
@@ -62,6 +67,11 @@ export default class NavbarComp2 extends Component {
               </Route>
               <Route path="/Ongoing">
                 <Ongoing />
+                </Route>
+            
+                <Route path="/requestCloth">
+                <RequestCloth />
+              
               </Route>
               <Route path="/contact">
                 <Contact />

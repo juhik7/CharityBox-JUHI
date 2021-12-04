@@ -77,7 +77,7 @@ const Login = () => {
         <div>
             <Navbar color="dark" dark expand="md">
                 <NavbarBrand href="/">CharityBox</NavbarBrand>
-                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
+                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />  
                 <Collapse isOpen={isOpen} navbar>
                 </Collapse>
             </Navbar>
