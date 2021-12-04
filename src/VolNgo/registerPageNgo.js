@@ -41,7 +41,7 @@ const RegisterPageNgo = () => {
         <label>EMAIL</label><br />
         <input className="box" value={email} onChange={(e) => setEmail(e.target.value)} /><br />
         <label>PASSWORD</label><br />
-        <input className="box" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
+        <input className="box" type="password" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
         <label>NGO NAME</label><br />
         <input className="box" value={nameNgo} onChange={(e) => setNameNgo(e.target.value)} /><br />
        

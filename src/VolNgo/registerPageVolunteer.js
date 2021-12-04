@@ -13,8 +13,8 @@ const RegisterPageVolunteer = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoader(true);
-    var db = firebase.firestore();
-    db.collection('RegisterPageVolunteer')
+    var projectFirestore = firebase.firestore();
+    projectFirestore.collection('users')
       .add({
         email: email,
         password:password,
@@ -40,12 +40,10 @@ const RegisterPageVolunteer = () => {
         <h1>For New volunteer </h1><br />
         <label>Volunteer Name</label><br />
         <input className="box" value={nameVol} onChange={(e) => setNameVol(e.target.value)} /><br />
-       
         <label>EMAIL</label><br />
         <input className="box" value={email} onChange={(e) => setEmail(e.target.value)} /><br />
         <label>PASSWORD</label><br />
-        <input className="box" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
-        
+        <input className="box" type="password" value={password} onChange={(e) => setPassword(e.target.value)} /><br />
         <button className="box2" type="submit">REGISTER</button>
       </form>
     </div>
