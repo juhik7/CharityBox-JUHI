@@ -74,18 +74,6 @@ const Ongoing = () => {
                     address: '100 Feet Ring Road, Banashankari Stage III, Dwaraka Nagar, Banashankari, Bengaluru, Karnataka 560085',
                   volunteer: ['Varun','Vijay']}]}
           title="Demo Title"
-          actions={[
-            {
-              icon: ()=><Edit />,
-              tooltip: 'Edit Event',
-              onClick: (event, rowData) => alert("You Edited " + rowData.name)
-            },
-            {
-              icon: ()=><DeleteOutline />,
-              tooltip: 'Delete Event',
-              onClick: (event, rowData) => alert("You Deleted " + rowData.name)
-            },
-          ]}
         />
         </div>
         

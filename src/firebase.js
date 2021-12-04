@@ -13,4 +13,5 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
 var mailDb = firebase.firestore();
+
 export default{db, firebase,mailDb};
