@@ -33,6 +33,9 @@ const AdminHeader = ({url}) =>{
                         <NavItem>
                             <Link className="nav-link" to={`${url}/coupons`}>COUPONS</Link>
                         </NavItem>
+                        <NavItem>
+                            <Link to ="/" className="nav-link">LOGOUT</Link>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>

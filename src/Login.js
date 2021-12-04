@@ -1,18 +1,27 @@
 import React from "react";
-import Header from "./Header";
+import { useState } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useState } from 'react';
 import UserProfile from './UserProfile';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Redirect
+  } from "react-router-dom";
+import {
+    Navbar,
+    NavItem,
+    NavbarToggler,
+    Collapse,
+    Nav,
+    NavbarBrand
+} from 'reactstrap';
 import { projectFirestore } from './firebase';
 import Select from 'react-select';
 import './App.css';
-import {
-    Redirect,
-    useRouteMatch
-  } from "react-router-dom";
-const Home = ({l}) =>{
-    let {path,url} = useRouteMatch();
+
+const Login = () => {
     const [isOpen, setIsOpen] = React.useState(false);
     const role = [
         { value: 'admin', label: 'admin' },
@@ -49,11 +58,8 @@ const Home = ({l}) =>{
                 progress: undefined,
             });
             UserProfile.setUserEmail(email);
-            var url = '/'+role;
-            sessionStorage.setItem("email", email);
-            sessionStorage.setItem("role", role);
-            //console.log(UserProfile.getUserEmail());
-            window.location.href = url;
+            <Redirect to="../" />
+
         }else{
             toast.error('AUTHENTICATION FAILED!!', {
                 position: "top-center",
@@ -67,10 +73,15 @@ const Home = ({l}) =>{
         }
 
     }
-    return(
+    return (
         <div>
-            <Header/>
-        <ToastContainer
+            <Navbar color="dark" dark expand="md">
+                <NavbarBrand href="/">CharityBox</NavbarBrand>
+                <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
+                <Collapse isOpen={isOpen} navbar>
+                </Collapse>
+            </Navbar>
+            <ToastContainer
                 position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
@@ -103,7 +114,7 @@ const Home = ({l}) =>{
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default Home;
+export default Login;

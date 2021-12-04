@@ -20,7 +20,7 @@ const DonorDash = () =>{
         <Switch>
             <Route exact path={"/donor"}>
                 <h2>WELCOME TO CHARITY BOX</h2>
-                <h2>ATISHAY JAIN</h2>
+                <h2>{sessionStorage.getItem("email")}</h2>
             </Route>
             
             <Route path={`${path}/Event`}>

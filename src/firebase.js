@@ -1,5 +1,5 @@
-import firebase from "firebase";
-
+import firebase from "firebase/app";
+import 'firebase/firestore';
 var firebaseConfig ={
     apiKey: "AIzaSyBuLanpuxNoB8fCNXqEDczisMiMj0jniyo",
     authDomain: "mywork-cd731.firebaseapp.com",
@@ -13,4 +13,6 @@ firebase.initializeApp(firebaseConfig);
 
 var db = firebase.firestore();
 var mailDb = firebase.firestore();
+const projectFirestore = firebase.firestore();
+export {projectFirestore};
 export default{db, firebase,mailDb};
