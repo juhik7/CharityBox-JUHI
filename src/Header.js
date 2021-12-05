@@ -20,9 +20,6 @@ const Header = ({url}) =>{
                 <Collapse isOpen={isOpen} navbar>
                     <Nav className="mr-auto" navbar>
                         <NavItem>
-                            <Link className="nav-link" to="/admin">Admin Dashboard</Link>
-                        </NavItem>
-                        <NavItem>
                             <Link className="nav-link" to="/donor">Donor Dashboard</Link>
                         </NavItem>
                         <NavItem>

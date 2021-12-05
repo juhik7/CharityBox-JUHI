@@ -1,6 +1,8 @@
 import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
+import './header.css';
+import { useState, useEffect } from 'react';
 import {
     Navbar,
     NavItem,
@@ -20,7 +22,7 @@ const AdminHeader = ({url}) =>{
                 <NavbarBrand href="/">ADMIN PANEL</NavbarBrand>
                 <NavbarToggler onClick={() => { setIsOpen(!isOpen) }} />
                 <Collapse isOpen={isOpen} navbar>
-                    <Nav className="mr-auto" navbar>
+                    <Nav className="mr-auto myUl" navbar>
                         <NavItem>
                             <Link className="nav-link" to={`${url}/events`}>EVENTS</Link> 
                         </NavItem>
@@ -34,7 +36,7 @@ const AdminHeader = ({url}) =>{
                             <Link className="nav-link" to={`${url}/coupons`}>COUPONS</Link>
                         </NavItem>
                         <NavItem>
-                            <Link to ="/" className="nav-link">LOGOUT</Link>
+                            <Link className="nav-link" to={`${url}/logout`}>LOGOUT</Link>
                         </NavItem>
                     </Nav>
                 </Collapse>
