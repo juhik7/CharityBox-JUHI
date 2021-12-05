@@ -2,16 +2,16 @@ import React from 'react';
 import {useState} from 'react';
 import "./form.css";
 import Select from 'react-select';
-import {Form, DatePicker, Space, TimePicker } from 'antd';
+import {DatePicker, Space, TimePicker } from 'antd';
 import 'antd/dist/antd.css';
 import { projectFirestore } from '../../firebase';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Create = () => {
     const [name  , setName] = useState("");
     const [address , SetAddress] = useState("");
-    const [addCity , SetAddCity] = useState("");
-    const [addArea , SetAddArea] = useState("");
     const [selectedValue, setSelectedValue] = useState([]);
     const city = [
         {value: 'Bengaluru', label: 'Bengaluru'}
@@ -50,15 +50,42 @@ const Create = () => {
 
         })
         .then((docRef) => {
-            alert("Data Successfully Submitted");
+            toast.success('EVENT ADDED SUCCESSFULLY!!!', {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
         })
         .catch((error) => {
-            console.error("Error adding document: ", error);
+            toast.error(error, {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
         });
     }
     
     return (
         <div className="container">
+            <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss={false}
+                draggable
+                pauseOnHover={false}
+            />
             <div className="row">
                 <div className="col-2" />
                 <div className="col-8">
@@ -66,7 +93,7 @@ const Create = () => {
                         <div className="row mb-4">
                             <div className="col">
                                 <div className="form-outline">
-                                    <Select placeholder="Select City" name="city" options={city}/>
+                                    <Select placeholder="Select City" name="city" options={city} defaultValue={city[0]}/>
                                 </div>
                             </div>
                             <div className="col">
