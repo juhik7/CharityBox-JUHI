@@ -5,6 +5,8 @@ import { Link,useRouteMatch,Switch,Route,Redirect } from "react-router-dom";
 import NotFound from "./NotFound";
 import Requests from "./NGO/requests";
 import Allocation from "./NGO/allocation";
+import Fulfilled from "./NGO/fulfilled";
+import Pending from "./NGO/pending";
 
 
 const Ngo = () => {
@@ -37,8 +39,10 @@ const Ngo = () => {
                         <Redirect to={`${path}/pending_req`} />
                     </Route>
                     <Route path={`${path}/pending_req`}>
+                        <Pending />
                     </Route>
                     <Route path={`${path}/fulfilled_req`}>
+                        <Fulfilled />
                     </Route>
                     <Route path={`${path}/pending_ngo`}>
                         <Requests />
