@@ -10,9 +10,9 @@ import './App.css';
 import {
     Redirect,
     useRouteMatch
-  } from "react-router-dom";
-const Home = ({l}) =>{
-    let {path,url} = useRouteMatch();
+} from "react-router-dom";
+const Home = ({ l }) => {
+    let { path, url } = useRouteMatch();
     const [isOpen, setIsOpen] = React.useState(false);
     const role = [
         { value: 'admin', label: 'admin' },
@@ -39,6 +39,12 @@ const Home = ({l}) =>{
             });
         })
         if (isFound) {
+            UserProfile.setUserEmail(email);
+            var url = '/' + role;
+            sessionStorage.setItem("email", email);
+            sessionStorage.setItem("role", role);
+            //console.log(UserProfile.getUserEmail());
+            window.location.href = url;
             toast.success('AUTHICATION SUCCESSFULL!!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -48,13 +54,8 @@ const Home = ({l}) =>{
                 draggable: true,
                 progress: undefined,
             });
-            UserProfile.setUserEmail(email);
-            var url = '/'+role;
-            sessionStorage.setItem("email", email);
-            sessionStorage.setItem("role", role);
-            //console.log(UserProfile.getUserEmail());
-            window.location.href = url;
-        }else{
+            
+        } else {
             toast.error('AUTHENTICATION FAILED!!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -63,14 +64,14 @@ const Home = ({l}) =>{
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
         }
 
     }
-    return(
+    return (
         <div>
-            <Header/>
-        <ToastContainer
+            <Header />
+            <ToastContainer
                 position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
