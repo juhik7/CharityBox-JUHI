@@ -14,11 +14,11 @@ const RegisterPageNgo = () => {
     e.preventDefault();
     setLoader(true);
     var db = firebase.firestore();
-    db.collection('RegisterPageNgo')
+    db.collection('pendingNGORegistration')
       .add({
         email: email,
         password:password,
-        nameNgo:nameNgo,
+        name:nameNgo,
 
         
       }).then(() => {

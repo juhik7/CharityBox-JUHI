@@ -1,11 +1,31 @@
 import React from "react";
-import { forwardRef } from 'react';
 import MaterialTable from 'material-table'
 import tableIcons from "../icons";
 import fakeData from './fakeData2.json';
 import "./table.css";
+import { useEffect, useState } from "react";
+import { projectFirestore } from '../../firebase';
 
 const Allocation = () =>{
+  const [info, setInfo] = useState([]);
+  const [load, setLoad] = useState(true);
+  useEffect(() => {
+    if (load) {
+      Fetchdata();
+    }
+  }, []);
+  const Fetchdata = () => {
+    setInfo([]);
+    projectFirestore.collection("approvedNGO").get().then((querySnapshot) => {
+      querySnapshot.forEach(element => {
+        var id = element.id;
+        var data = element.data();
+        data.id = id;
+        setInfo(arr => [...arr, data]);
+        setLoad(false);
+      });
+    })
+  }
       return(
         <div className="myTable" style={{maxWidth: "85%"}}>
           <MaterialTable
@@ -17,8 +37,8 @@ const Allocation = () =>{
               { title: 'Clothes Received', field: 'received', type: 'numeric'},
               { title: 'Pending Request', field: 'pending', type: 'numeric'}
             ]}
-            data={fakeData}
-            title="Clothe's Allocation"
+            data={info}
+            title="Approved NGO'S"
           />
           </div>
           

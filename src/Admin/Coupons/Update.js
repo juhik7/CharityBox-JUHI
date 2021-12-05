@@ -181,7 +181,7 @@ const Update = () => {
         draggable
         pauseOnHover={false}
       />
-      <Modal title="Update Event" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={1000}>
+      <Modal title="Update Coupon" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel} width={1000}>
         <div className="container">
           <div className="row">
             <div className="col-2" />
@@ -189,14 +189,17 @@ const Update = () => {
               <form className="myform">
                 <div className="form-outline mb-4">
                   <input type="text" required className="form-control" placeholder="Enter Coupon Name" value={oldName} onChange={(e) => { setOldName(e.target.value) }} />
+                  <span><i><center>COUPON NAME</center></i></span>
                 </div>
                 <div className="form-outline mb-4">
                   <div className="row justify-content-between">
                     <div className="col-6">
                       <input type="text" required className="form-control" placeholder="Enter Business" value={oldBusiness} onChange={(e) => { setOldBusiness(e.target.value) }} />
+                      <span><i><center>BUSINESS NAME</center></i></span>
                     </div>
                     <div className="col-6">
                       <input type="text" required className="form-control" placeholder="Enter Discount" value={oldDiscount} onChange={(e) => { setOldDiscount(e.target.value) }} />
+                      <span><i><center>DISCOUNT %</center></i></span>
                     </div>
                   </div>
                 </div>
@@ -204,25 +207,31 @@ const Update = () => {
                   <div className="row justify-content-between">
                     <div className="col-6">
                       <input type="text" required className="form-control" placeholder="Enter Minimum Order Value" value={oldMOV} onChange={(e) => { setOldMOV(e.target.value) }} />
+                      <span><i><center>MINIMUM ORDER VALUE</center></i></span>
                     </div>
                     <div className="col-6">
                       <input type="text" required className="form-control" placeholder="Enter Maximum Discount" value={oldMaxDisc} onChange={(e) => { setOldMaxDisc(e.target.value) }} />
+                      <span><i><center>MAXIMUM DISCOUNT</center></i></span>
                     </div>
                   </div>
                 </div>
                 <div className="form-outline mb-4">
                   <input type="text" required className="form-control" placeholder="Enter PREFIX" value={oldPrefix} onChange={(e) => { setPrefix(e.target.value) }} />
+                  <span><i><center>COUPON CODE</center></i></span>
                 </div>
                 <div className="form-outline mb-4">
                   <div className="row justify-content-between">
                     <div className="col-4">
-                    <input type="text" required className="form-control" placeholder="Enter Valid From" value={oldValidFrom} onChange={(e) => { setValidFrom(e.target.value) }} />
+                      <input type="text" required className="form-control" placeholder="Enter Valid From" value={oldValidFrom} onChange={(e) => { setValidFrom(e.target.value) }} />
+                      <span><i><center>VALID FROM</center></i></span>
                     </div>
                     <div className="col-4">
-                    <input type="text" required className="form-control" placeholder="Enter Valid Upto" value={oldValidUpto} onChange={(e) => { setValidUpto(e.target.value) }} />
+                      <input type="text" required className="form-control" placeholder="Enter Valid Upto" value={oldValidUpto} onChange={(e) => { setValidUpto(e.target.value) }} />
+                      <span><i><center>VALID UPTO</center></i></span>
                     </div>
                     <div className="col-4">
-                    <input type="text" required className="form-control" placeholder="Enter Points" value={oldPoints} onChange={(e) => { setPoints(e.target.value) }} />
+                      <input type="text" required className="form-control" placeholder="Enter Points" value={oldPoints} onChange={(e) => { setPoints(e.target.value) }} />
+                      <span><i><center>POINTS</center></i></span>
                     </div>
                   </div>
                 </div>
