@@ -3,21 +3,25 @@ import Header from "./Header";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useState } from 'react';
-import UserProfile from './UserProfile';
 import { projectFirestore } from './firebase';
 import Select from 'react-select';
 import './App.css';
+<<<<<<< HEAD
 import {
     Redirect,
     useRouteMatch
 } from "react-router-dom";
 const Home = ({ l }) => {
     let { path, url } = useRouteMatch();
+=======
+const Home = ({l}) =>{
+>>>>>>> 0e13dd7a47c7b02ff78e925421f7548046e2da76
     const [isOpen, setIsOpen] = React.useState(false);
     const role = [
         { value: 'admin', label: 'admin' },
         { value: 'donor', label: 'donor' },
-        { value: 'volunteer', label: 'volunteer' }
+        { value: 'volunteer', label: 'volunteer' },
+        { value: 'ngo', label: 'ngo' }
     ]
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -54,8 +58,16 @@ const Home = ({ l }) => {
                 draggable: true,
                 progress: undefined,
             });
+<<<<<<< HEAD
             
         } else {
+=======
+            var url = '/'+role;
+            sessionStorage.setItem("email", email);
+            sessionStorage.setItem("role", role);
+            window.location.href = url;
+        }else{
+>>>>>>> 0e13dd7a47c7b02ff78e925421f7548046e2da76
             toast.error('AUTHENTICATION FAILED!!', {
                 position: "top-center",
                 autoClose: 5000,

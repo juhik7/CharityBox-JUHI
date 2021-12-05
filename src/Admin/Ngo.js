@@ -3,7 +3,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import "./events.css";
 import { Link,useRouteMatch,Switch,Route,Redirect } from "react-router-dom";
 import NotFound from "./NotFound";
-import AllNgo from "./NGO/allNgo";
 import Requests from "./NGO/requests";
 import Allocation from "./NGO/allocation";
 
@@ -19,28 +18,32 @@ const Ngo = () => {
                             NGO
                         </h2>
                     <button className="buttonClass" type="button">
-                        <Link className="eventLink" to={`${url}/status`}>STATUS</Link>
+                        <Link className="eventLink" to={`${url}/pending_req`}>PENDING REQUESTS</Link>
                     </button>
                     <button className="buttonClass" type="button">
-                        <Link className="eventLink" to={`${url}/pending`}>PENDING</Link>
+                        <Link className="eventLink" to={`${url}/fulfilled_req`}>FULFILLED REQUESTS</Link>
                     </button>
                     <button className="buttonClass" type="button">
-                        <Link className="eventLink" to={`${url}/allocation`}>ALLOCATION</Link>
+                        <Link className="eventLink" to={`${url}/pending_ngo`}>PENDING NGO</Link>
+                    </button>
+                    <button className="buttonClass" type="button">
+                        <Link className="eventLink" to={`${url}/approved_ngo`}>APPROVED NGO</Link>
                     </button>
                     </div>
                 </div>
                 <div className="col-9">
                 <Switch>
                     <Route exact path={path}>
-                        <Redirect to={`${path}/status`} />
+                        <Redirect to={`${path}/pending_req`} />
                     </Route>
-                    <Route path={`${path}/status`}>
-                        <AllNgo />
+                    <Route path={`${path}/pending_req`}>
                     </Route>
-                    <Route path={`${path}/pending`}>
+                    <Route path={`${path}/fulfilled_req`}>
+                    </Route>
+                    <Route path={`${path}/pending_ngo`}>
                         <Requests />
                     </Route>
-                    <Route path={`${path}/allocation`}>
+                    <Route path={`${path}/approved_ngo`}>
                         <Allocation />
                     </Route>
                     <Route component={NotFound} />
