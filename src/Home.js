@@ -6,16 +6,7 @@ import { useState } from 'react';
 import { projectFirestore } from './firebase';
 import Select from 'react-select';
 import './App.css';
-<<<<<<< HEAD
-import {
-    Redirect,
-    useRouteMatch
-} from "react-router-dom";
-const Home = ({ l }) => {
-    let { path, url } = useRouteMatch();
-=======
 const Home = ({l}) =>{
->>>>>>> 0e13dd7a47c7b02ff78e925421f7548046e2da76
     const [isOpen, setIsOpen] = React.useState(false);
     const role = [
         { value: 'admin', label: 'admin' },
@@ -43,12 +34,6 @@ const Home = ({l}) =>{
             });
         })
         if (isFound) {
-            UserProfile.setUserEmail(email);
-            var url = '/' + role;
-            sessionStorage.setItem("email", email);
-            sessionStorage.setItem("role", role);
-            //console.log(UserProfile.getUserEmail());
-            window.location.href = url;
             toast.success('AUTHICATION SUCCESSFULL!!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -58,16 +43,11 @@ const Home = ({l}) =>{
                 draggable: true,
                 progress: undefined,
             });
-<<<<<<< HEAD
-            
-        } else {
-=======
             var url = '/'+role;
             sessionStorage.setItem("email", email);
             sessionStorage.setItem("role", role);
             window.location.href = url;
         }else{
->>>>>>> 0e13dd7a47c7b02ff78e925421f7548046e2da76
             toast.error('AUTHENTICATION FAILED!!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -76,14 +56,14 @@ const Home = ({l}) =>{
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-            });
+                });
         }
 
     }
-    return (
+    return(
         <div>
-            <Header />
-            <ToastContainer
+            <Header/>
+        <ToastContainer
                 position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
