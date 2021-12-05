@@ -13,9 +13,9 @@ const RequestCloth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setLoader(true);
-    var db = firebase.firestore();
-    db.collection('RequestCloth')
-      .add({
+    var   db = firebase.firestore();
+    db.collection('users').doc("NGO")
+      .set({
         email: email,
         clothNumber: clothNumber,
     

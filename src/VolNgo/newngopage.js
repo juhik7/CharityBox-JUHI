@@ -16,7 +16,8 @@ import Volunteer from "./volunteer";
 import Personalquery from "./personalquery";
 import Contact from "./contact";
 import Ongoing from "./table";
-import RequestCloth from "./Event";
+import MainRegistrationPage from "../MainRegistrationPage";
+import RequestCloth from "./RequestClothes";
 import RegisterPageNgo from "./registerPageNgo";
 function Subscribe4() {
   const msg2 = firebase.messaging();
@@ -41,7 +42,8 @@ export default class NavbarComp2 extends Component {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                <Nav.Link as={Link} to={"/RegisterPageNgo"}>registration form</Nav.Link>
+              
+                <Nav.Link as={Link} to={"/MainRegistrationPage"}>registration</Nav.Link>
                   <Nav.Link as={Link} to={"/ngopartner"}>NGO PARTNER</Nav.Link>
                   <Nav.Link as={Link} to={"/Ongoing"}> EVENTS</Nav.Link>
                   <Nav.Link as={Link} to={"/RequestCloth"}>REQUEST</Nav.Link>
@@ -56,8 +58,8 @@ export default class NavbarComp2 extends Component {
           </Navbar>
           <div>
             <Switch>
-            <Route path="/RegisterPageNgo">
-                <RegisterPageNgo />
+            <Route path="/MainRegistrationPage">
+                <MainRegistrationPage />
               </Route>
               <Route path="/ngopartner">
                 <Ngopartner />
