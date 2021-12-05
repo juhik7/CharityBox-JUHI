@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link,useRouteMatch,Switch,Route,Redirect } from "react-router-dom";
 import NotFound from "./NotFound";
@@ -7,7 +7,9 @@ import Upcoming from "./Events/Upcoming";
 
 const Events=()=>{
     let {path,url} = useRouteMatch();
+
     return(
+        
         <div className="container-fluid full-w full-h">
             <div className="row full-h">
                 <div className="col-3">
@@ -39,7 +41,12 @@ const Events=()=>{
                 </div>
             </div>
         </div>
-    )
+
+        
+        )
+
+
+
 };
 
 export default Events;
