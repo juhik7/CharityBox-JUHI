@@ -3,6 +3,7 @@ import { Navbar, Nav, NavDropdown, Container, Form, Button } from 'react-bootstr
 import { Routes, Route } from 'react-router-dom';
 import Subscribe from "./volunteer";
 import firebase from 'firebase';
+import Fulfilled from './verificationDonor';
 import {
   BrowserRouter as Router,
   Switch,
@@ -42,6 +43,7 @@ export default class NavbarComp extends Component {
                   <Nav.Link as={Link} to={"/volunteer"}>VOLUNTEER</Nav.Link>
 
                   <Nav.Link as={Link} to={"/Ongoing"}>EVENTS</Nav.Link>
+                  <Nav.Link as={Link} to={"/Fulfilled "}>Verifiy</Nav.Link>
                   
 
                   <NavDropdown title="CONTACT US" id="collasible-nav-dropdown">
@@ -70,6 +72,9 @@ export default class NavbarComp extends Component {
               <Route path="/Ongoing">
                 <Ongoing />
               </Route>
+              <Route path="/Fulfilled ">
+                <Fulfilled />
+                </Route>
              
               <Route path="/contact">
                 <Contact />
