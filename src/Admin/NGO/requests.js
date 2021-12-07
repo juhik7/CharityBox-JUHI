@@ -73,10 +73,6 @@ const Requests = () => {
                   <th className="myHeader">AREA OF WORK</th>
                   <td className="mytabStyle">{rowData.workArea}</td>
                 </tr>
-                <tr className="mytabStyle">
-                  <th className="myHeader">WEBSITE</th>
-                  <td className="mytabStyle">{rowData.website}</td>
-                </tr>
               </table>
 
             </div>
@@ -84,7 +80,7 @@ const Requests = () => {
         }}
         columns={[
           { title: 'Name', field: 'name' },
-          { title: 'Type', field: 'type' },
+          { title: 'Website', field: 'website' },
           { title: 'E-Mail', field: 'email' },
           { title: 'Founder', field: 'founder' },
           { title: 'Founded', field: 'founded' },

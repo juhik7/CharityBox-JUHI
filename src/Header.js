@@ -28,6 +28,9 @@ const Header = ({url}) =>{
                         <NavItem>
                             <Link className="nav-link" to="/volunteer">Volunteer Dashboard</Link>
                         </NavItem>
+                        <NavItem>
+                            <Link className="nav-link" to="/NGOReg">NGO Registration</Link>
+                        </NavItem>
                     </Nav>
                 </Collapse>
             </Navbar>
