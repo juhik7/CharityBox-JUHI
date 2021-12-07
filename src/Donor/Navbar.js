@@ -11,11 +11,11 @@ const Navbar = ({url}) =>{
             <div className="leftSide">
                 <div className="links" id={showLinks ? "hidden" : ""}>
                     <Link to="/donor" className="link">DONORDASH</Link>
-                    <Link to ={`${url}/Event`} className="link">EVENTS</Link>
-                    <Link to={`${url}/Points`} className="link">POINTS</Link>
+                    <Link to ={`${url}/Event`} className="link">EVENT</Link>
+                    <Link to={`${url}/Points`} className="link">REEDEEM POINTS</Link>
                     <Link to={`${url}/History`} className="link">HISTORY</Link>
                     <Link to ={`${url}/Profile`} className="link">PROFILE</Link>
-                    <Link to ={`${url}/Registration`} className="link">Registration</Link>
+                    {/* <Link to ={`${url}/Registration`} className="link">Registration</Link> */}
                 </div>
                 <button className="button" onClick={() => setShowLinks(!showLinks)}>⫸</button>
             </div>
