@@ -3,7 +3,9 @@ import MaterialTable from 'material-table';
 import { projectFirestore } from '../firebase';
 import tableIcons from "./icon";
 import { useEffect, useState } from "react";
-
+import { Button, Card } from 'react-bootstrap';
+import { Row, Col } from "react-bootstrap";
+import {BsCheckLg} from "react-icons/bs";
 
 const Fulfilled = () => {
     const [info, setInfo] = useState([]);
@@ -31,7 +33,7 @@ const Fulfilled = () => {
     return (
 <div>
     <center>
-        <h2>Details
+        <h2>verification detail
             </h2>
             </center>
 {
@@ -50,45 +52,28 @@ const Fulfilled = () => {
 const Frame = ({Date ,Donated , Name})=>{
     console.log(Date + " " + Name + " " + Donated);
     return(
-        <center>
-            <div className="div">
-             
-             <p>date : {Date}</p>
+        <div className="div">
+          <center>
+            <Row><Col>
+          <Card style={{ width: '18rem' }}>
+           
+            <Card.Body>
+              <Card.Title>verification</Card.Title>
+              <Card.Text>
+              <p>date : {Date}</p>
              <p>donated: {Donated}</p>
              <p>name : {Name}</p>
-             </div>
+             
+              </Card.Text>
+              <Button variant="primary" ><BsCheckLg/>verified</Button>
+            </Card.Body>
+          </Card>
+        </Col>
+        </Row></center>
+</div>
 
-        </center>
+        
+        
     );
 }
 export default Fulfilled;
-/*
-  <div>
-            <div className="myTable" style={{ maxWidth: "85%" }}>
-            <MaterialTable
-                    icons={tableIcons}
-                    detailPanel={rowData => {
-                        return (
-                          <div className="detailPanel">
-                            <table className="mytabStyle">
-                              <tr className="mytabStyle">
-                                <th colSpan={2} className="myHeader">DISPATCH ADDRESS</th>
-                                <td colSpan={4} className="mytabStyle" >{rowData.address}</td>
-                              </tr>
-                            </table>
-                          </div>
-                        )
-                      }}
-                    columns={[
-                        { title: 'Name', field: 'name' },
-                        { title: 'E-Mail', field: 'email' },
-                        { title: 'Clothes Sent', field: 'disbursed' },
-                        { title: 'Date', field: 'date' },
-                        { title: 'Courier', field: 'courierName' },
-                        { title: 'Tracking ID', field: 'trackingID' },
-                    ]}
-                  //  data={info}
-                  title="Fulfilled Requests"
-                  />
-              </div>
-                </div>*/

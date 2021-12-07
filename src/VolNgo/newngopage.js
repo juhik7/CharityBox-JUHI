@@ -48,7 +48,7 @@ export default class NavbarComp2 extends Component {
                   <Nav.Link as={Link} to={"/ngopartner"}>NGO PARTNER</Nav.Link>
                   <Nav.Link as={Link} to={"/Ongoing"}> EVENTS</Nav.Link>
                   <Nav.Link as={Link} to={"/RequestCloth"}>REQUEST</Nav.Link>
-                  <Nav.Link as={Link} to={"/Fulfilled2"}>DETAIL</Nav.Link>
+                  <Nav.Link as={Link} to={"/Fulfilled2"}>RECEIVED DETAIL</Nav.Link>
                   <NavDropdown title="CONTACT US" id="collasible-nav-dropdown">
                     <NavDropdown.Item as={Link} to={"/contact"}>+91827398127</NavDropdown.Item>
                     <NavDropdown.Item as={Link} to={"/personalquery"}>QUERY</NavDropdown.Item>
@@ -74,11 +74,9 @@ export default class NavbarComp2 extends Component {
                 </Route>
                 <Route path="/requestCloth">
                 <RequestCloth />
-              
               </Route>
                 <Route path="/Fulfilled2">
                 <Fulfilled2 />
-              
               </Route>
               <Route path="/contact">
                 <Contact />

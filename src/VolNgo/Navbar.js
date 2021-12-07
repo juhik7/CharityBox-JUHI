@@ -39,11 +39,11 @@ export default class NavbarComp extends Component {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                <Nav.Link as={Link} to={"/registerPageVolunteer"}>registration pageVOLUNTEER</Nav.Link>
+               
                   <Nav.Link as={Link} to={"/volunteer"}>VOLUNTEER</Nav.Link>
 
                   <Nav.Link as={Link} to={"/Ongoing"}>EVENTS</Nav.Link>
-                  <Nav.Link as={Link} to={"/Fulfilled "}>Verifiy</Nav.Link>
+                  <Nav.Link as={Link} to={"/Fulfilled "}>VERIFICATION</Nav.Link>
                   
 
                   <NavDropdown title="CONTACT US" id="collasible-nav-dropdown">
