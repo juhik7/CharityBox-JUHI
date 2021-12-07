@@ -8,8 +8,9 @@ import { projectFirestore } from '../../firebase';
 
 const Ongoing = () => {
   let nameRef = useRef();
-  let eventRef= useRef();
-  let dateRef= useRef();
+  let eventRef = useRef();
+  let dateRef = useRef();
+  let [selectedEvent, selectedState] = useState([]);
   // let [currentEvent,eventState]=useState(undefined);
   // // if(currentEvent){
   // //   projectFirestore.collection("events").where('name', '==', name).onSnapshot((querySnapshot) => {
@@ -31,13 +32,19 @@ const Ongoing = () => {
   // //         // setCurrEvent()
   // //       })}
   // // },[currentEvent])
-  
+
   // Modal
   const [show, setShow] = useState(false);
-  const [quantity, setQuantity] = useState("");
-
+  const [quantity, setQuantity] = useState();
+  let eventName = ""
   const handleClose = (e) => setShow(false);
-  const handleShow = (e) =>setShow(true);
+  const handleShow = (name) => {
+    projectFirestore.collection("events").where('name', '==', name).onSnapshot((querySnapshot) => {
+      querySnapshot.forEach(e => selectedState(e.data()))
+    })
+    setShow(true); console.log("LLLLL", selectedEvent)
+    setQuantity();
+  }
 
   const handleSubmit = (e) => {
 
@@ -46,6 +53,7 @@ const Ongoing = () => {
       //email:email,
       role: "donor",
       quantity: quantity,
+      event: eventRef.current.value,
     })
       .then(() => {
         alert('Added');
@@ -54,13 +62,14 @@ const Ongoing = () => {
         alert(error.message);
       })
     setShow(false);
+
     ;
   }
   //
   //Start
 
   const ref = projectFirestore.collection("events")
-  console.log('ddddaata',ref);
+  console.log('ddddaata', ref);
 
   const [data, setData] = useState([])
   const [loader, setLoader] = useState(true)
@@ -69,20 +78,52 @@ const Ongoing = () => {
     ref.onSnapshot((querySnapshot) => {
       const items = []
       querySnapshot.forEach((doc) => {
-        items.push(doc.data())
+        var mydata = doc.data();
+        mydata['startDateTime'] = mydata['startDateTime'].toDate();
+        mydata['endDateTime'] = mydata['endDateTime'].toDate();
+        items.push(mydata);
       })
       setData(items)
-   setLoader(false)
+      setLoader(false)
+      console.log('Inside Get Data', loader)
     })
   }
   //userInfo
   const email = sessionStorage.getItem("email");
   const user1 = projectFirestore.collection("users")
   console.log('Usersssssss:', user1);
-  const [user, setUser] = useState([])
+  const [user, setUser] = useState([]);
+  function myDate(myDate) {
+    var mydate = new Date(myDate);
+    console.log(myDate);
+    var day = mydate.getDate();
+    var month = ["01", "02", "03", "04", "05", "06",
+      "07", "08", "09", "10", "11", "12"][mydate.getMonth()];
+    if (day < 10) {
+      day = "0" + day;
+    }
+    var str = mydate.getFullYear() + '-' + month + '-' + day;
+
+    return str;
+  }
+  function myTime(d) {
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    let seconds = d.getSeconds();
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    if (minute < 10) {
+      minute = "0" + minute;
+    }
+    if (hour < 10) {
+      hour = "0" + hour;
+    }
+    return hour+":"+minute+":"+seconds;;
+  }
   function getUser() {
     user1.where('email', '==', email).onSnapshot((querySnapshot) => {
-      const userss = []
+      const userss = [];
       querySnapshot.forEach((doc) => {
         userss.push(doc.data())
       })
@@ -92,7 +133,7 @@ const Ongoing = () => {
 
   useEffect(() => {
     getData()
-    console.log('data',data);
+    console.log('data', data);
     getUser()
     console.log(user);
 
@@ -162,14 +203,14 @@ const Ongoing = () => {
               <input type="text" value={user.name} ref={nameRef} disabled />
             </div>
           ))}
-          {loader === false && (data.map((event) => 
-          <div key={event}>
+          {/* {loader === false && (data.map((event) =>  */}
+          <div >
             <label>Event Name</label>
-            <input type="text" value={event.name} ref={eventRef} disabled /><br/>
+            <input type="text" value={selectedEvent.name} ref={eventRef} disabled /><br />
             <label>Date</label>
-            <input type="text" value={event.startDate} ref={dateRef} disabled /><br/>
-            </div>
-          ))}
+            <input type="text" value={myDate(selectedEvent.startDateTime)} ref={dateRef} disabled /><br />
+          </div>
+          {/* ))} */}
           <label>Quantity</label>
           <input type="number"
             placeholder="Quantity"
@@ -202,9 +243,10 @@ const Ongoing = () => {
             <p>{event.name}</p>
             <p>{event.city}</p>
             <p>{event.area}</p>
-            <p>{event.startDate}</p>
+            <p>{myDate(event.endDateTime)}</p>
+            <p>{myTime(event.endDateTime)}</p>
             <p>{event.endTime}</p>
-            <Button type="submit" onClick={handleShow} >Donate</Button>
+            <Button type="submit" onClick={() => { handleShow(event.name) }} >Donate</Button>
             <hr />
           </div>
         )))}
