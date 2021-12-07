@@ -21,7 +21,7 @@ const Home = ({l}) =>{
         e.preventDefault();
         var role = e.target.role.value;
         console.log(email, password, role);
-        projectFirestore.collection("users").get().then((querySnapshot) => {
+        projectFirestore.collection("users").where('email', '==', email).get().then((querySnapshot) => {
             querySnapshot.forEach(element => {
                 var data = element.data()
                 if ((email === data.email) && data.email) {

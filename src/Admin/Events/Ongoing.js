@@ -31,9 +31,9 @@ const Ongoing = () => {
     setIsModalVisible(true);
     setOldName(oldData.name);
     setOldAddress(oldData.address);
-    setOldStartDate(oldData.startDate);
-    setOldStartTime(oldData.startTime);
-    setOldEndTime(oldData.endTime);
+    setOldStartDate(myDate(oldData.startDateTime));
+    setOldStartTime(myTime(oldData.startDateTime));
+    setOldEndTime(myTime(oldData.endDateTime));
     setId(oldData.id);
   };
 
@@ -41,9 +41,8 @@ const Ongoing = () => {
     projectFirestore.collection("events").doc(id).update({
       name: oldName,
       address: oldAddress,
-      startDate: oldStartDate,
-      startTime: oldStartTime,
-      endTime: oldEndTime
+      startDateTime: new Date(oldStartDate+" "+oldStartTime),
+      endDateTime: new Date(oldStartDate +" "+ oldEndTime),
     });
     toast.success('EVENT UPDATED!!!', {
       position: "top-center",
@@ -83,10 +82,41 @@ const Ongoing = () => {
         var id = element.id;
         var data = element.data();
         data.id = id;
+        if (data['startDateTime'] && data['endDateTime']) {
+          data['startDateTime'] = data['startDateTime'].toDate();
+          data['endDateTime'] = data['endDateTime'].toDate();
+        }
         setInfo(arr => [...arr, data]);
         setLoad(false);
       });
     })
+  }
+  function myDate(myDate) {
+    var mydate = new Date(myDate);
+    var day = mydate.getDate()
+    var month = ["01", "02", "03", "04", "05", "06",
+      "07", "08", "09", "10", "11", "12"][mydate.getMonth()];
+    if (day < 10) {
+      day = "0" + day;
+    }
+    var str = mydate.getFullYear() + '-' + month + '-' + day;
+
+    return str;
+  }
+  function myTime(d) {
+    let hour = d.getHours();
+    let minute = d.getMinutes();
+    let seconds = d.getSeconds();
+    if (seconds < 10) {
+      seconds = "0" + seconds;
+    }
+    if (minute < 10) {
+      minute = "0" + minute;
+    }
+    if (hour < 10) {
+      hour = "0" + hour;
+    }
+    return hour+":"+minute+":"+seconds;;
   }
   return (
     <div className="myTable" style={{ maxWidth: "85%" }}>
@@ -116,9 +146,9 @@ const Ongoing = () => {
           { title: 'Name', field: 'name' },
           { title: 'City', field: 'city' },
           { title: 'Area', field: 'area' },
-          { title: 'Event Date', field: 'startDate' },
-          { title: 'Start Time', field: 'startTime' },
-          { title: 'End Time', field: 'endTime' },
+          { title: 'Event Date', field: 'startDateTime', type: 'date' },
+          { title: 'Start Time', field: 'startDateTime', type: 'time' },
+          { title: 'End Time', field: 'endDateTime', type: 'time' },
         ]}
         data={info}
         title="Event Detail's"

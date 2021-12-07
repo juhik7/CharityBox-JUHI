@@ -9,13 +9,14 @@ import tableIcons from "../icons";
 import { ToastContainer, toast } from 'react-toastify';
 import { Modal } from 'antd';
 import 'react-toastify/dist/ReactToastify.css';
+import { Timestamp } from "@firebase/firestore";
 
 const Update = () => {
   const [info, setInfo] = useState([]);
   const [load, setLoad] = useState(true);
   const [oldName, setOldName] = useState('');
   const [oldBusiness, setOldBusiness] = useState('');
-  const [oldDiscount, setOldDiscount] = useState('');
+  const [oldDiscount, setOldDiscount] = useState(0);
   const [oldMOV, setOldMOV] = useState('');
   const [oldMaxDisc, setOldMaxDisc] = useState('');
   const [oldPrefix, setPrefix] = useState('');
@@ -29,11 +30,25 @@ const Update = () => {
       Fetchdata();
     }
   }, []);
+  function myDate(myDate) {
+    var mydate = new Date(myDate);
+    var day = mydate.getDate()
+    var month = ["01", "02", "03", "04", "05", "06",
+      "07", "08", "09", "10", "11", "12"][mydate.getMonth()];
+      if(day<10){
+        day = "0"+day;
+      }
+    var str = mydate.getFullYear() +'-' +month + '-' +day;
+    
+    return str;
+  }
   const Fetchdata = () => {
     projectFirestore.collection("coupons").get().then((querySnapshot) => {
       querySnapshot.forEach(element => {
         var id = element.id;
         var data = element.data();
+        data['valid_from'] = data['valid_from'].toDate();
+        data['valid_upto'] = data['valid_upto'].toDate();
         data.id = id;
         setInfo(arr => [...arr, data]);
         setLoad(false);
@@ -43,7 +58,7 @@ const Update = () => {
   const showModal = (oldData) => {
     setOldName('');
     setOldBusiness('');
-    setOldDiscount('');
+    setOldDiscount(0);
     setOldMOV('');
     setOldMaxDisc('');
     setPrefix('');
@@ -57,8 +72,8 @@ const Update = () => {
     setOldMOV(oldData.min_ord_val);
     setOldMaxDisc(oldData.max_disc);
     setPrefix(oldData.prefix);
-    setValidFrom(oldData.valid_from);
-    setValidUpto(oldData.valid_upto);
+    setValidFrom(myDate(oldData.valid_from));
+    setValidUpto(myDate(oldData.valid_upto));
     setPoints(oldData.points);
     setId(oldData.id);
   };
@@ -68,12 +83,12 @@ const Update = () => {
       name: oldName,
       prefix: oldPrefix,
       business: oldBusiness,
-      discount: oldDiscount,
-      min_ord_val: oldMOV,
-      max_disc: oldMaxDisc,
-      valid_from: oldValidFrom,
-      valid_upto: oldValidUpto,
-      points: oldPoints,
+      discount: parseInt(oldDiscount),
+      min_ord_val: parseInt(oldMOV),
+      max_disc: parseInt(oldMaxDisc),
+      valid_from: new Date(oldValidFrom),
+      valid_upto: new Date(oldValidUpto),
+      points: parseInt(oldPoints),
     });
     toast.success('EVENT UPDATED!!!', {
       position: "top-center",
@@ -87,7 +102,7 @@ const Update = () => {
     setIsModalVisible(false);
     setOldName('');
     setOldBusiness('');
-    setOldDiscount('');
+    setOldDiscount(0);
     setOldMOV('');
     setOldMaxDisc('');
     setPrefix('');
@@ -100,7 +115,7 @@ const Update = () => {
   const handleCancel = () => {
     setOldName('');
     setOldBusiness('');
-    setOldDiscount('');
+    setOldDiscount(0);
     setOldMOV('');
     setOldMaxDisc('');
     setPrefix('');
@@ -139,8 +154,8 @@ const Update = () => {
           { title: 'Name', field: 'name' },
           { title: 'Points', field: 'points' },
           { title: 'Prefix', field: 'prefix' },
-          { title: 'Valid From', field: 'valid_from' },
-          { title: 'Valid Upto', field: 'valid_upto' },
+          { title: 'Valid From', field: 'valid_from', type: 'date', },
+          { title: 'Valid Upto', field: 'valid_upto', type: 'date', },
         ]}
         data={info}
         title="Coupon's Detail"
@@ -198,7 +213,7 @@ const Update = () => {
                       <span><i><center>BUSINESS NAME</center></i></span>
                     </div>
                     <div className="col-6">
-                      <input type="text" required className="form-control" placeholder="Enter Discount" value={oldDiscount} onChange={(e) => { setOldDiscount(e.target.value) }} />
+                      <input type="number" pattern="^[0-9]*$" required className="form-control" placeholder="Enter Discount" value={oldDiscount} onChange={(e) => { setOldDiscount(e.target.value) }} />
                       <span><i><center>DISCOUNT %</center></i></span>
                     </div>
                   </div>
@@ -206,7 +221,7 @@ const Update = () => {
                 <div className="form-outline mb-4">
                   <div className="row justify-content-between">
                     <div className="col-6">
-                      <input type="text" required className="form-control" placeholder="Enter Minimum Order Value" value={oldMOV} onChange={(e) => { setOldMOV(e.target.value) }} />
+                      <input type="number" pattern="^[0-9]*$" required className="form-control" placeholder="Enter Minimum Order Value" value={oldMOV} onChange={(e) => { setOldMOV(e.target.value) }} />
                       <span><i><center>MINIMUM ORDER VALUE</center></i></span>
                     </div>
                     <div className="col-6">

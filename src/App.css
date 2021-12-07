@@ -100,6 +100,9 @@ body {
   cursor: pointer;
   height: 8%;
 }
+.formMarginBot{
+  margin-bottom: 40px;
+}
 .button:hover{
   cursor: pointer;
 }

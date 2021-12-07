@@ -20,7 +20,7 @@ import NotFound from "./NotFound";
 import NVDash from "./NVDash";
 import DonorDash from './Donor/Donordash';
 import NgoDash from './Ngo';
-import Login from './Login';
+import NGORegistartion from './NGORegistration';
 const App=() =>{
   return (
     <Router>
@@ -39,6 +39,9 @@ const App=() =>{
         </Route>
         <Route path="/ngo">
           <NgoDash />
+        </Route>
+        <Route path="/NGOReg">
+          <NGORegistartion />
         </Route>
         <Route component={NotFound} />
       </Switch>
