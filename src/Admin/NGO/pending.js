@@ -8,16 +8,6 @@ import { projectFirestore } from '../../firebase';
 import { Modal } from 'antd';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-function getCurrentDate(separator = '-') {
-
-    let newDate = new Date()
-    let date = newDate.getDate();
-    let month = newDate.getMonth() + 1;
-    let year = newDate.getFullYear();
-
-    return `${date}${separator}${month < 10 ? `0${month}` : `${month}`}${separator}${year}`
-}
-
 const Pending = () => {
     const [info, setInfo] = useState([]);
     const [load, setLoad] = useState(true);
@@ -55,6 +45,7 @@ const Pending = () => {
         setTrackingID('');
         setcourierName('');
         setIsModalVisible(false);
+        var today = new Date();
         projectFirestore.collection("fulfilledRequests").add({
             name: oldData.name,
             email: oldData.email,
@@ -62,7 +53,7 @@ const Pending = () => {
             disbursed: oldData.requested,
             trackingID: trackingID,
             courierName: courierName,
-            date: getCurrentDate()
+            date: today
         })
         projectFirestore.collection("pendingRequests").doc(oldData.id).delete();
         setOldData({});

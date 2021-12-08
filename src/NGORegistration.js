@@ -4,9 +4,6 @@ import { useState,useEffect } from 'react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { projectFirestore } from './firebase';
-import Ngopartner from './VolNgo/ngopartner';
-import "./ngovol.css"
-
 
 const NGORegistartion = () => {
     const [name, setName] = useState("");
@@ -102,7 +99,6 @@ const NGORegistartion = () => {
     return (
         <div>
             <Header />
-            <Ngopartner/>
             <ToastContainer
                 position="top-center"
                 autoClose={3000}

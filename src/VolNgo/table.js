@@ -21,6 +21,7 @@ import { CenterFocusStrong } from "@material-ui/icons";
 
 
 const Ongoing = () => {
+  const volEmail = sessionStorage.getItem('email');
   const tableIcons = {
       Add: forwardRef((props, ref) => <AddBox {...props} ref={ref} />),
       Check: forwardRef((props, ref) => <Check {...props} ref={ref} />),
@@ -41,6 +42,7 @@ const Ongoing = () => {
       ViewColumn: forwardRef((props, ref) => <ViewColumn {...props} ref={ref} />)
     };
     return(
+      <div><h2>{volEmail}</h2>
       <div style={{maxWidth: "100%",}}>
         <MaterialTable
         icons={tableIcons}
@@ -76,7 +78,7 @@ const Ongoing = () => {
           title="Demo Title"
         />
         </div>
-        
+</div>        
   );
 };
 

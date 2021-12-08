@@ -28,6 +28,7 @@ function Subscribe3() {
     Token.set(volunteerToken);
   })
 }
+
 export default class NavbarComp extends Component {
   render() {
     return (

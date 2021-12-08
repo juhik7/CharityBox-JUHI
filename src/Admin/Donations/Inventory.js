@@ -52,14 +52,14 @@ const Inventory = () => {
     const handleOk = () => {
         setIsModalVisible(false);
         projectFirestore.collection("inventory").doc("RECEIVED").update({
-            target: newReceivedTarget
+            target: parseInt(newReceivedTarget)
           });
           projectFirestore.collection("inventory").doc("DISBURSED").update({
-            target: newDisbursedTarget
+            target: parseInt(newDisbursedTarget)
           });
           toast.success('TARGET UPDATED!!!', {
             position: "top-center",
-            autoClose: 2000,
+            autoClose: 3000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: false,

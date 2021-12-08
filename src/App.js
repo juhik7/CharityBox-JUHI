@@ -1,6 +1,5 @@
-import React, { useState } from 'react';
+import { React }from 'react';
 //import firebase from 'firebase';
-
 import './App.css';
 import {
   BrowserRouter as Router,
@@ -8,20 +7,15 @@ import {
   Route,
 } from "react-router-dom";
 //import * as firebase from 'firebase/app';
-import Ongoing  from './VolNgo/table';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import NavbarComp from'./VolNgo/Navbar';
-import Volunteer from './VolNgo/volunteer';
-import pushNotification from "./pushNotification";
-import { StylesContext } from '@material-ui/styles';
 import AdminDash from "./Admin/AdminDash";
 import Home from "./Home";
 import NotFound from "./NotFound";
 import NVDash from "./NVDash";
 import DonorDash from './Donor/Donordash';
-import NgoDash from './Ngo';
 import NGORegistartion from './NGORegistration';
 import VOLRegistration from './VOLRegistration';
+import NGODash from './VolNgo/NGODash';
 const App=() =>{
   return (
     <Router>
@@ -39,7 +33,7 @@ const App=() =>{
           <NVDash />
         </Route>
         <Route path="/ngo">
-          <NgoDash />
+          <NGODash />
         </Route>
         <Route path="/NGOReg">
           <NGORegistartion />

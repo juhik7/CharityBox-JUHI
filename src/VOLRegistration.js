@@ -9,7 +9,7 @@ import "./ngovol.css"
 import { Router } from '@material-ui/icons';
 const VOLRegistraion = () => {
     const [name, setName] = useState("");
-    const [contact, SetContact] = useState("");
+    const [contact, setContact] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -117,19 +117,20 @@ const VOLRegistraion = () => {
                         <input type ="text" required id="name" className="form-control" placeholder="Enter Name" onChange={(e) => { setName(e.target.value) }} />
                         </div>
                         <div className="form-outline mb-4 required-field">
-                        <textarea required className="form-control" id="contact" rows="4" placeholder="Contact Number" onChange={(e) => { SetContact(e.target.value) }}></textarea>
+                        <input type ="number" required id="contact" className="form-control" placeholder="Contact No" onChange={(e) => { setContact(e.target.value) }} />
                         </div>
+                       
 
                        
-                        <div className="col-6 required-field">
+                      <div className="form-outline mb-4 required-field">
                         <input type ="text" required id="email" className="form-control" placeholder="Enter E-Mail" onChange={(e) => { setEmail(e.target.value)}} />
                         </div>
 
-                        <div className="col-6 required-field">
+                        <div className="form-outline mb-4 required-field">
                         <input type ="password" required id="password" className="form-control" placeholder="Enter Password" onChange={(e) => { setPassword(e.target.value) }} />
 
                         </div>
-                        <div className="col-6 required-field">
+                        <div className="form-outline mb-4 required-field">
                         <input type ="password" required id="confirm-password" className="form-control" placeholder="Enter Confirm Password" onChange={(e) => { setConfirmPassword(e.target.value) }} />
                         </div>
                         
