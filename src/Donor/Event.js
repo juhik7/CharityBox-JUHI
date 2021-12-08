@@ -4,6 +4,7 @@ import { Link,useRouteMatch,Switch,Route,Redirect } from "react-router-dom";
 import NotFound from "./NotFound";
 import Ongoing from "./Events/Ongoing";
 import Upcoming from "./Events/Upcoming";
+import Today from "./Events/Today";
 
 const Events=()=>{
     let {path,url} = useRouteMatch();
@@ -31,7 +32,7 @@ const Events=()=>{
                         <Redirect to={`${path}/Ongoing`} />
                     </Route>
                     <Route path={`${path}/Ongoing`}>
-                        <Ongoing />
+                        <Today />
                     </Route>
                     <Route path={`${path}/Upcoming`}>
                         <Upcoming />

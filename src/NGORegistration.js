@@ -16,11 +16,42 @@ const NGORegistartion = () => {
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
     var isError = false;
-    const sub = (e) => {
+    async function checkValidation(e) {
+        if(!(password === confirmPassword)){
+            isError=true;
+            toast.error("PASSWORD & CONFIRM PASSWORD IS NOT MATCHING!!!", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+        }
+        const ngo = projectFirestore.collection('pendingNGORegistration');
+        const snapshot = await ngo.where('email', '==', email).get();
+        if (!snapshot.empty) {
+            isError=true;
+            console.log("USER EXIST");
+            toast.error("USER ALREADY EXIST!!!", {
+                position: "top-center",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: false,
+                draggable: true,
+                progress: undefined,
+            });
+        } 
+        return;
+    }
+    async function sub(e) {
         e.preventDefault();
-        isError=false;
+        isError = false;
+        await checkValidation(e);
         if (isError) {
-            toast.error("CANNOT ADD EVENT!!!", {
+            toast.error("CANNOT SEND YOUR REQUEST!!!", {
                 position: "top-center",
                 autoClose: 3000,
                 hideProgressBar: false,
@@ -103,7 +134,7 @@ const NGORegistartion = () => {
                             <div className="form-outline mb-4">
                                 <div className="row justify-content-between">
                                     <div className="col-6 required-field">
-                                        <input type="text" required id="email" className="form-control" placeholder="Enter E-Mail" onChange={(e) => { setEmail(e.target.value) }} />
+                                        <input type="text" required id="email" className="form-control" placeholder="Enter E-Mail" onChange={(e) => { setEmail(e.target.value)}} />
                                     </div>
                                     <div className="col-6 required-field">
                                         <input type="text" required className="form-control" id="website" placeholder="Enter Website" onChange={(e) => { setWebsite(e.target.value) }} />
