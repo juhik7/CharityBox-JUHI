@@ -6,8 +6,7 @@ import { useState } from 'react';
 import { projectFirestore } from './firebase';
 import Select from 'react-select';
 import './App.css';
-const Home = ({l}) =>{
-    const [isOpen, setIsOpen] = React.useState(false);
+const Home = ({ l }) => {
     const role = [
         { value: 'admin', label: 'admin' },
         { value: 'donor', label: 'donor' },
@@ -17,23 +16,29 @@ const Home = ({l}) =>{
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [isFound, setIsFound] = useState(false);
-    const sub = (e) => {
+    var validated = false;
+    async function sub(e) {
         e.preventDefault();
         var role = e.target.role.value;
+        validated = false;
         console.log(email, password, role);
-        projectFirestore.collection("users").where('email', '==', email).get().then((querySnapshot) => {
+        await projectFirestore.collection("users").where('email', '==', email).get().then((querySnapshot) => {
             querySnapshot.forEach(element => {
-                var data = element.data()
+                var data = element.data();
+                console.log("CHECKING");
                 if ((email === data.email) && data.email) {
                     if ((password === data.password) && data.password) {
                         if ((role === data.role) && data.role) {
                             setIsFound(true);
+                            validated = true;
+                            console.log("SETTING");
                         }
                     }
                 }
             });
         })
-        if (isFound) {
+        console.log("VALIDATING",isFound,validated);
+        if (validated) {
             toast.success('AUTHICATION SUCCESSFULL!!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -43,11 +48,11 @@ const Home = ({l}) =>{
                 draggable: true,
                 progress: undefined,
             });
-            var url = '/'+role;
+            var url = '/' + role;
             sessionStorage.setItem("email", email);
             sessionStorage.setItem("role", role);
             window.location.href = url;
-        }else{
+        } else {
             toast.error('AUTHENTICATION FAILED!!', {
                 position: "top-center",
                 autoClose: 5000,
@@ -56,14 +61,13 @@ const Home = ({l}) =>{
                 pauseOnHover: true,
                 draggable: true,
                 progress: undefined,
-                });
+            });
         }
-
     }
-    return(
+    return (
         <div>
-            <Header/>
-        <ToastContainer
+            <Header />
+            <ToastContainer
                 position="top-center"
                 autoClose={5000}
                 hideProgressBar={false}
