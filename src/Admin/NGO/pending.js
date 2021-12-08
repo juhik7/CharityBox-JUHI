@@ -15,7 +15,6 @@ const Pending = () => {
     const [trackingID, setTrackingID] = useState('');
     const [courierName, setcourierName] = useState('');
     const [oldData, setOldData] = useState({});
-
     useEffect(() => {
         if (load) {
             Fetchdata();
@@ -39,14 +38,19 @@ const Pending = () => {
         setOldData({});
         setIsModalVisible(true);
         setOldData(oldData);
-
     }
-    const handleOk = () => {
+    async function handleOk() {
+        var NGOdata = {};
+        console.log(oldData.email);
+        await projectFirestore.collection("approvedNGO").doc(oldData.email).get().then((querySnapshot) => {
+            var data = querySnapshot.data();
+            NGOdata = data;
+        });
         setTrackingID('');
         setcourierName('');
         setIsModalVisible(false);
         var today = new Date();
-        projectFirestore.collection("fulfilledRequests").add({
+        await projectFirestore.collection("fulfilledRequests").add({
             name: oldData.name,
             email: oldData.email,
             address: oldData.address,
@@ -54,8 +58,12 @@ const Pending = () => {
             trackingID: trackingID,
             courierName: courierName,
             date: today
-        })
-        projectFirestore.collection("pendingRequests").doc(oldData.id).delete();
+        });
+        await projectFirestore.collection("pendingRequests").doc(oldData.id).delete();
+        await projectFirestore.collection("approvedNGO").doc(oldData.email).update({
+            pending: parseInt(NGOdata.pending - parseInt(oldData.requested)),
+            received: parseInt(NGOdata.received + parseInt(oldData.requested))
+        });
         setOldData({});
         setInfo([]);
         Fetchdata();

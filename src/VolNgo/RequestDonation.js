@@ -57,6 +57,10 @@ const RequestDonation = ({ user }) => {
                 name: NGOdata.name,
                 requested: parseInt(clothesRequested)
             });
+            await projectFirestore.collection("approvedNGO").doc(user).update({
+                requested: parseInt(NGOdata.requested + parseInt(clothesRequested)),
+                pending: parseInt(NGOdata.pending + parseInt(clothesRequested)),
+            });
             toast.success("REQUEST SUCCESSFULLY PROCESSED", {
                 position: "top-center",
                 autoClose: 3000,
