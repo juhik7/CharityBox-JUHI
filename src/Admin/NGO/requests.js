@@ -34,7 +34,7 @@ const Requests = () => {
       password: NGOdata.password,
       role: "ngo"
     });
-    projectFirestore.collection("approvedNGO").add({
+    projectFirestore.collection("approvedNGO").doc(NGOdata.email).set({
       name: NGOdata.name,
       email: NGOdata.email,
       address: NGOdata.address,
