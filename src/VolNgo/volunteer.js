@@ -27,9 +27,9 @@ import {
 function Volunteer() {
   return (
    
-    <div className="container"><Router>
+    <div className="container">
       <div className="container">
-        <h1>Become a Volunteer</h1>
+        <center><h1>Become a Volunteer</h1></center>
         <h5>We provide our volunteers the opportunity to grow through selfless action. You can contribute in any of the below ways –
         </h5>
       </div>
@@ -42,7 +42,7 @@ function Volunteer() {
         <h5>Whatever talent you have, we are sure you can somehow make use of it to spread happiness with us ? !!</h5>
         <p>Write to us at
           abc@gamil.com with your resume mentioning what type of volunteering opportunities you are looking for. Keep the subject line as “Volunteer: name,skillset”.</p>
-        <h6> Happy Volunteering ?</h6>
+        <center><h6> Happy Volunteering ?</h6></center>
       </div>
     
       <div className="container">
@@ -80,7 +80,7 @@ function Volunteer() {
         </Carousel>
       </div>
      
-      <div className="container">
+     {/* <div className="container">
         <Row><Col>
           <Card style={{ width: '18rem' }}>
             <Card.Img className="imagecss" variant="top" src={logo193} />
@@ -142,8 +142,8 @@ function Volunteer() {
             <RequestMsg />
           </Route>
         </Switch>
-      </div>
-    </Router>
+  </div>*/}
+  
   </div>
   )
 }

@@ -44,9 +44,9 @@ export default class NavbarComp2 extends Component {
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
               
-                <Nav.Link as={Link} to={"/MainRegistrationPage"}>registration</Nav.Link>
+               
                   <Nav.Link as={Link} to={"/ngopartner"}>NGO PARTNER</Nav.Link>
-                  <Nav.Link as={Link} to={"/Ongoing"}> EVENTS</Nav.Link>
+               
                   <Nav.Link as={Link} to={"/RequestCloth"}>REQUEST</Nav.Link>
                   <Nav.Link as={Link} to={"/Fulfilled2"}>RECEIVED DETAIL</Nav.Link>
                   <NavDropdown title="CONTACT US" id="collasible-nav-dropdown">
@@ -60,9 +60,7 @@ export default class NavbarComp2 extends Component {
           </Navbar>
           <div>
             <Switch>
-            <Route path="/MainRegistrationPage">
-                <MainRegistrationPage />
-              </Route>
+           
               <Route path="/ngopartner">
                 <Ngopartner />
               </Route>
