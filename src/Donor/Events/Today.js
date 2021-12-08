@@ -23,21 +23,21 @@ const Today = () => {
         var today = new Date();
         var tommorow = new Date();
         tommorow.setDate(tommorow.getDate() + 1);
-        projectFirestore.collection("events").where('endDateTime','<',tommorow).where('endDateTime','>',today).get().then((querySnapshot) => {
-          querySnapshot.forEach(element => {
-            var id = element.id;
-            var data = element.data();
-            data.id = id;
-            if (data['startDateTime'] && data['endDateTime']) {
-              data['startDateTime'] = data['startDateTime'].toDate();
-              data['endDateTime'] = data['endDateTime'].toDate();
-            }
-            setInfo(arr => [...arr, data]);
-            setLoad(false);
-          });
+        projectFirestore.collection("events").where('endDateTime', '<', tommorow).where('endDateTime', '>', today).get().then((querySnapshot) => {
+            querySnapshot.forEach(element => {
+                var id = element.id;
+                var data = element.data();
+                data.id = id;
+                if (data['startDateTime'] && data['endDateTime']) {
+                    data['startDateTime'] = data['startDateTime'].toDate();
+                    data['endDateTime'] = data['endDateTime'].toDate();
+                }
+                setInfo(arr => [...arr, data]);
+                setLoad(false);
+            });
         })
-      };
-      const showModal = (oldData) => {
+    };
+    const showModal = (oldData) => {
         setNoOfClothes('');
         setOldData({});
         setIsModalVisible(true);
@@ -63,7 +63,7 @@ const Today = () => {
             pauseOnHover: false,
             draggable: true,
             progress: undefined,
-          });
+        });
     };
     const handleCancel = () => {
         setNoOfClothes('');
